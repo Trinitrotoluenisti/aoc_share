@@ -1,0 +1,11 @@
+aoc_share/database/database.db
+
+# Python's things
+**__pycache__
+
+# Editors'/IDEs' things
+**.swp
+
+# Direnv
+.direnv
+.envrc
