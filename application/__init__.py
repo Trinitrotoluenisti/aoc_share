@@ -27,3 +27,6 @@ db.create_all()
 if not Update.query.first():
     from .scraper import populate_db
     populate_db()
+
+# Routes the routes
+from .routes import *
