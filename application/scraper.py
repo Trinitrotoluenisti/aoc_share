@@ -45,7 +45,7 @@ def populate_db():
 
     for user_data in data['members'].values():
         # Adds new users
-        user = User(id=user_data['id'], username=user_data['name'], last_update_id=lu.id)
+        user = User(id=user_data['id'], username=user_data['name'], points=user_data['local_score'], last_update_id=lu.id)
         db.session.add(user)
 
         # Registers all the levels done

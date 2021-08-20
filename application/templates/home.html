@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block body %}
+    <form action="/logout" method="POST"> <input type="submit" value="Logout"> </form>
+
+
+    <div>
+        <span>Days</span>
+        <div>
+
+            {% for day in range(1, 25) %}
+                <span> {{ day }} </span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div>
+        <span>Leaderboard</span>
+
+        <table>
+            {% for pos, user in leaderboard %}
+                <tr>
+                    <td> {{ pos + 1 }} </td>
+                    <td> {{ user[0] }} </td>
+                    <td> {{ user[1] }} </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

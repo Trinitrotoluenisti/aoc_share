@@ -5,5 +5,15 @@
 {% endblock %}
 
 {% block body %}
+    <form action="/login" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="gianluparri03" required>
 
+        <br>
+
+        <label for="keep_logged">Keep me logged in</label>
+        <input type="checkbox" name="keep_logged">
+
+        <input type="submit" value="Login">
+    </form>
 {% endblock %}

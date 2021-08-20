@@ -14,6 +14,7 @@
         {% block css %}{% endblock %}
 
         <!-- JS -->
+        {% if error %} <script> alert("{{ error }}"); </script> {% endif %}
         {% block js %}{% endblock %}
     </head>
 
