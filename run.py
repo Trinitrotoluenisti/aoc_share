@@ -1,4 +1,4 @@
-from aoc_share import app
+from application import app
 
 
 if __name__ == '__main__':

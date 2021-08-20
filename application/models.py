@@ -7,7 +7,7 @@ class User(db.Model):
     """
     The User model contains:
     id             [PK]: the user's id from Advent of Code
-    username        [U]: the user's username from Advent of Code
+    username        [U]: the user's username
     last_update_id  [F]: the id of the last update received
     """
 

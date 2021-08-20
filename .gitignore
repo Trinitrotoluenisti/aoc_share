@@ -1,4 +1,6 @@
-aoc_share/database/database.db
+application/configs.py
+database/
+data.json
 
 # Python's things
 **__pycache__
