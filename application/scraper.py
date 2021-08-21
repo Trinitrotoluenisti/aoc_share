@@ -51,7 +51,7 @@ def populate_db():
         # Registers all the levels done
         for day, parts in user_data['completion_day_level'].items():
             for part in parts:
-                db.session.add(Solution(author=user, day=day, part=part))
+                db.session.add(Solution(author=user, type=0, day=day, part=part))
 
     # Saves changes
     db.session.commit()

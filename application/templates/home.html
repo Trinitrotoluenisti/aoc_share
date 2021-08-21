@@ -9,7 +9,7 @@
         <div>
 
             {% for day in range(1, 25) %}
-                <span> {{ day }} </span>
+                <a href="days/{{ day }}"> {{ day }} </a>
             {% endfor %}
         </div>
     </div>
@@ -18,9 +18,9 @@
         <span>Leaderboard</span>
 
         <table>
-            {% for pos, user in leaderboard %}
+            {% for user in leaderboard %}
                 <tr>
-                    <td> {{ pos + 1 }} </td>
+                    <td> {{ loop.index0 + 1 }} </td>
                     <td> {{ user[0] }} </td>
                     <td> {{ user[1] }} </td>
                 </tr>

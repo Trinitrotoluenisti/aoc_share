@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+
+{% block body %}
+    <h1>Day {{ day }}</h1>
+
+    {% for part in ('1', '2') %}
+        <div>
+            <h2>Part {{ part }}</h2>
+            <b>Solutions</b>
+
+            {% for solution in solutions['part_' + part] %}
+                <div>
+                    <span>{{ solution[0] }}</span>
+
+                    {% if loop.index0 == user_index['part_' + part] %}
+                        {% if solution[1] > 0 %}
+                            <a href="/solutions/{{ solution[2] }}" download>Download</a>
+                            <a href="solution/{{ part }}">Edit</a>
+                        {% else %}
+                            <a href="solution/{{ part }}">Upload</a>
+                        {% endif %}
+                    {% elif solution[1] == 2 %}
+                        <a href="/solutions/{{ solution[2] }}" download>Download</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
