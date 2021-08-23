@@ -7,6 +7,7 @@ from .configs import DATABASE_PATH, SOLUTIONS_DIR
 
 # Initializes app and configures it
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + str(DATABASE_PATH) + '/aoc_share.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

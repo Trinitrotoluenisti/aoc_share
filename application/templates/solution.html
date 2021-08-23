@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/solution.css') }}">
+{% endblock %}
+
+{% block body %}
+    <form action="." method="POST" enctype="multipart/form-data">
+        <h1> {% if new %} Upload {% else %} Edit {% endif %} solution for day {{ day }} part {{ part }}</h1>
+
+        <label for="file">Solution</label>
+        <input type="file" name="file" {{ 'required' if new }}>
+        {% if not new %}<i>You can leave it empty if you want to keep the previous file</i> {% endif %}
+        <br> <br>
+
+        <label for="public">Public solution</label>
+        <input type="checkbox" name="public" {{ 'checked' if not new and public }}>
+        <br> <br>
+
+        <input type="submit" value="{{ 'Upload' if new else 'Save changes' }}">
+        {% if not new %} <input type="submit" name="delete" value="Delete solution"> {% endif %}
+    </form>
+{% endblock %}
