@@ -1,20 +1,55 @@
-/*
-html, body {
-    height: auto;
-    width: auto;
-
-    font-family: 'Roboto', sans-serif;
+:root {
+	--background: #231F20;
+	--foreground: #3A7CA5;
 }
-*/
 
 html {
-    height: auto;
-    width: auto;
+	/*
+	height: auto;
+	width: auto;
+	*/
 
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
+
+	background-color: var(--background);
+	color: var(--foreground);
 }
 
-#page-title {
-    font-size: 2.5em;
-    font-weight: bold;
+a:visited {
+	color: blue;
+}
+
+/* Inputs */
+
+label { font-size: 1.2em; }
+
+input[type=text], input[type=number], input[type=password] {
+	padding: .7vh;
+
+	border: none;
+	border-radius: 3px;
+}
+
+input[type=submit], button {
+	margin: 10px 0;
+	padding: 8px 16px;
+
+	border: 2px solid var(--foreground);
+	border-radius: 3px;
+
+	background-color: var(--foreground);
+	color: var(--background);
+
+	text-align: center;
+	font-weight: bold;
+
+	transition-duration: .2s;
+	-webkit-transition-duration: .2s; /* Chrome, Opera, Safari */
+
+	cursor: pointer;
+}
+
+input[type=submit]:hover, button:hover {
+	background-color: var(--background);
+	color: var(--foreground);
 }

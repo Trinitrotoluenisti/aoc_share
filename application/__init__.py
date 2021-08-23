@@ -25,7 +25,7 @@ from .models import *
 db.create_all()
 
 # Populates the db if it's empty
-if not Update.query.first():
+if not User.query.first():
     from .scraper import populate_db
     populate_db()
 

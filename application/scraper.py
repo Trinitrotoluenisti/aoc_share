@@ -38,14 +38,9 @@ def get_data():
 def populate_db():
     data = get_data()
 
-    # Creates an update saying that the server has just been started
-    lu = Update(data='Server started')
-    db.session.add(lu)
-    db.session.commit()
-
     for user_data in data['members'].values():
         # Adds new users
-        user = User(id=user_data['id'], username=user_data['name'], points=user_data['local_score'], last_update_id=lu.id)
+        user = User(id=user_data['id'], username=user_data['name'], points=user_data['local_score'])
         db.session.add(user)
 
         # Registers all the levels done

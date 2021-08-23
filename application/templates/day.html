@@ -1,41 +1,45 @@
 {% extends "template.html" %}
 
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='style/day.css') }}">
+{% endblock %}
+
 {% block body %}
-    <a href="/">Go back</a>
+	<a href="/">Go back</a>
 
-    <h1>Day {{ day }}</h1>
+	<h1>Day {{ day }}</h1>
 
-    {% for part in ('1', '2') %}
-        {% set user_index = user_indexes['part_' + part] %}
+	{% for part in ('1', '2') %}
+		{% set user_index = user_indexes['part_' + part] %}
 
-        <h2>Part {{ part }}</h2>
-        <b>Solutions</b>
+		<h2>Part {{ part }}</h2>
+		<b>Solutions</b>
 
-        {% if not solutions['part_' + part] %}
-            <br> <span>Nobody solved this level</span>
-        {% elif user_index == -1 %}
-            <br> <i>NB: since you haven't completed this part, you can't download any solution.</i>
-        {% endif %}
+		{% if not solutions['part_' + part] %}
+			<br> <span>Nobody solved this level</span>
+		{% elif user_index == -1 %}
+			<br> <i>NB: since you haven't completed this part, you can't download any solution.</i>
+		{% endif %}
 
-        <table>
-            {% for solution in solutions['part_' + part] %}
-                <tr>
-                    <td>{{ solution[0] }}</td>
+		<table>
+			{% for solution in solutions['part_' + part] %}
+				<tr>
+					<td>{{ solution.author.username }}</td>
 
-                    <td><i>[{{ 'Public' if solution[1] == 2 else 'Private' if solution[1] == 1 else 'Not Uploaded' }}]</i></td>
+					<td><i>[{{ 'Public' if solution.type == 2 else 'Private' if solution.type == 1 else 'Not Uploaded' }}]</i></td>
 
-                    <td>
-                        {% if loop.index0 == user_index and solution[1] > 0 %}
-                            <a href="/solutions/{{ solution[2] }}/" download>Download</a>
-                            <a href="solutions/{{ part }}/">Edit</a>
-                        {% elif loop.index0 == user_index %}
-                            <a href="solutions/{{ part }}/">Upload</a>
-                        {% elif solution[1] == 2 and user_index != -1 %}
-                            <a href="/solutions/{{ solution[2] }}/" download>Download</a>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% endfor %}
+					<td>
+						{% if loop.index0 == user_index and solution.type > 0 %}
+							<a href="/solutions/{{ solution.id }}/" download>Download</a>
+							<a href="solutions/{{ part }}/">Edit</a>
+						{% elif loop.index0 == user_index %}
+							<a href="solutions/{{ part }}/">Upload</a>
+						{% elif solution.type == 2 and user_index != -1 %}
+							<a href="/solutions/{{ solution.id }}/" download>Download</a>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endfor %}
 {% endblock %}

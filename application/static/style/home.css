@@ -1,0 +1,38 @@
+#calendar-title {
+	font-weight: bold;
+	font-size: 2.25em;
+
+	margin: 1vh 0 .5vh 0;
+}
+
+table { border-collapse: collapse; }
+
+th { font-size: 1.25em; }
+
+.calendar-cell {
+	border: 1px solid var(--foreground);
+
+	padding: 13px;
+}
+
+.calendar-cell:hover {
+	background-color: var(--foreground);
+	color: var(--background);
+
+	cursor: pointer;
+}
+
+#leaderboard-title {
+	font-weight: bold;
+	font-size: 2.25em;
+
+	margin: 3vh 0 .5vh 0;
+}
+
+.leaderboard-name-cell { float: left; }
+
+.leaderboard-score-cell {
+	padding-left: 10px;
+
+	float: right;
+}

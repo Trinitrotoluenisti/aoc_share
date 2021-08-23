@@ -1,30 +1,34 @@
 {% extends "template.html" %}
 
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='style/home.css') }}">
+{% endblock %}
+
 {% block body %}
-    <form action="/logout" method="POST"> <input type="submit" value="Logout"> </form>
+	<form action="/logout" method="POST">
+		<input type="submit" value="Logout">
+	</form>
 
+	<div id="calendar-title">Calendar</div>
 
-    <div>
-        <span>Days</span>
-        <div>
+	<table>
+		{% for offset in range(1, 23, 7) %}
+			<tr>
+				{% for day in range(offset, (offset + 7 if offset + 7 < 26 else 26)) %}
+					<th class="calendar-cell" onclick="location.href += 'days/{{ day }}/'"> {{ day }} </th>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
 
-            {% for day in range(1, 26) %}
-                <a href="days/{{ day }}/"> {{ day }} </a>
-            {% endfor %}
-        </div>
-    </div>
+	<div id="leaderboard-title">Leaderboard</div>
 
-    <div>
-        <span>Leaderboard</span>
-
-        <table>
-            {% for user in leaderboard %}
-                <tr>
-                    <td> {{ loop.index0 + 1 }} </td>
-                    <td> {{ user[0] }} </td>
-                    <td> {{ user[1] }} </td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
+	<table>
+		{% for user in leaderboard %}
+			<tr>
+				<th class="leaderboard-name-cell">{{ loop.index0 + 1 }}. {{ user.username }}</th>
+				<th class="leaderboard-score-cell">{{ user.points }}</th>
+			</tr>
+		{% endfor %}
+	</table>
 {% endblock %}

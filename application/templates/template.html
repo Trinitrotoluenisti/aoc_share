@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>AOC Share</title>
+	<head>
+		<title>AOC Share</title>
 
-        <!-- Meta -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Meta -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- CSS -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
-        {% block css %}{% endblock %}
+		<!-- CSS -->
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+		{% block css %}{% endblock %}
 
-        <!-- JS -->
-        {% if error %} <script> alert("{{ error }}"); </script> {% endif %}
-        {% block js %}{% endblock %}
-    </head>
+		<!-- JS -->
+		{% if error %} <script> alert("{{ error }}"); </script> {% endif %}
+		{% block js %}{% endblock %}
+	</head>
 
-    <body>
-        <div id="page-title">AOC Share</div>
-
-        {% block body %}{% endblock %}
-    </body>
+	<body>
+		{% block body %}{% endblock %}
+	</body>
 </html>

@@ -22,8 +22,9 @@ def needs_auth(func):
 @app.route('/')
 @needs_auth
 def home_route(username):
-    # Returns the homepage
-    leaderboard = User.get_points_leaderboard()
+    # Calculates the leaderboard based on aoc's local_score
+    leaderboard = User.query.all()
+    leaderboard.sort(key=lambda p: p.username, reverse=True)
     return render_template('home.html', leaderboard=leaderboard)
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -60,12 +61,16 @@ def day_route(username, day):
     if day not in range(1, 26):
         return redirect('/'), 404
 
-    solutions = Solution.get_by_day(day)
+    # Looks for solutions in the database
+    solutions = {'part_1': [], 'part_2': []}
+    for part in (1, 2):
+        data = Solution.query.filter_by(day=day, part=part).all()
+        solutions[f'part_{part}'] = sorted(data, key=lambda s: s.author.username)
 
     # Calculates the user's index in the solutions
     user_indexes = {}
     for part in (1, 2):
-        index = [i for i, u in enumerate(solutions[f'part_{part}']) if u[0] == username]
+        index = [i for i, u in enumerate(solutions[f'part_{part}']) if u.author.username == username]
         user_indexes[f'part_{part}'] = index[0] if index else -1
 
     # Returns the day.html page
