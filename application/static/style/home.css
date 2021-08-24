@@ -1,18 +1,36 @@
-#calendar-title {
-	font-weight: bold;
-	font-size: 2.25em;
+main {
+	width: 100%;
+	height: calc(100% - 60px);
 
-	margin: 1vh 0 .5vh 0;
+	display: flex;
+	align-items: center;
 }
+
+main > div {
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.spacer { margin-top: 90px; }
 
 table { border-collapse: collapse; }
 
-th { font-size: 1.25em; }
+#calendar-div {
+	width: 40%;
+	padding: 0 30px 0 31px;
+	border-right: 1px solid var(--foreground);
+}
+
+#calendar-div span { margin-bottom: 18px; }
 
 .calendar-cell {
+	padding: 13px;
 	border: 1px solid var(--foreground);
 
-	padding: 13px;
+	text-align: center;
 }
 
 .calendar-cell:hover {
@@ -22,17 +40,24 @@ th { font-size: 1.25em; }
 	cursor: pointer;
 }
 
-#leaderboard-title {
-	font-weight: bold;
-	font-size: 2.25em;
-
-	margin: 3vh 0 .5vh 0;
+#leaderboard-div {
+	width: 100%;
+	padding: 0 50px;
+	overflow: auto;
 }
 
-.leaderboard-name-cell { float: left; }
+#leaderboard { width: 100%; }
 
-.leaderboard-score-cell {
-	padding-left: 10px;
+#leaderboard tr { border-bottom: 1px solid; }
 
+#user-row { background-color: #E7E7E7; }
+
+#leaderboard td { padding: 20px 10px 5px 10px; }
+
+.leaderboard-position { width: 0; }
+
+.leaderboard-points {
 	float: right;
+
+	font-weight: bold;
 }

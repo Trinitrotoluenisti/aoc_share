@@ -1,13 +1,12 @@
 :root {
-	--background: #231F20;
-	--foreground: #3A7CA5;
+	--background: #F6F8FA;
+	--background-nav: #24292E;
+	--foreground: #586069;
 }
 
 html {
-	/*
-	height: auto;
-	width: auto;
-	*/
+	margin: 0;
+	height: 100%;
 
 	font-family: 'Roboto', sans-serif;
 
@@ -15,15 +14,46 @@ html {
 	color: var(--foreground);
 }
 
-a:visited {
-	color: blue;
+body {
+	height: 100%;
+	margin: 0;
 }
 
-/* Inputs */
+/* Nav */
+
+nav {
+	width: 100%;
+	height: 60px;
+	margin: 0;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	background-color: var(--background-nav);
+}
+
+nav * {
+	margin-right: 30px;
+
+	border: none;
+	color: white;
+	background-color: var(--background-nav);
+
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+
+	cursor: pointer;
+}
+
+nav *:hover { opacity: .8; }
+
+/* Form stuff */
 
 label { font-size: 1.2em; }
 
-input[type=text], input[type=number], input[type=password] {
+input[type=text] {
 	padding: .7vh;
 
 	border: none;
@@ -44,7 +74,7 @@ input[type=submit], button {
 	font-weight: bold;
 
 	transition-duration: .2s;
-	-webkit-transition-duration: .2s; /* Chrome, Opera, Safari */
+	-webkit-transition-duration: .2s;
 
 	cursor: pointer;
 }

@@ -5,30 +5,38 @@
 {% endblock %}
 
 {% block body %}
-	<form action="/logout" method="POST">
-		<input type="submit" value="Logout">
-	</form>
 
-	<div id="calendar-title">Calendar</div>
+	<main>
+		<div id="calendar-div">
+			<div class="spacer"></div>
+			<span>Click one of the days in the calendar to see the uploaded solutions</span>
 
-	<table>
-		{% for offset in range(1, 23, 7) %}
-			<tr>
-				{% for day in range(offset, (offset + 7 if offset + 7 < 26 else 26)) %}
-					<th class="calendar-cell" onclick="location.href += 'days/{{ day }}/'"> {{ day }} </th>
+			<table>
+				{% for offset in range(1, 23, 7) %}
+					<tr>
+						{% for day in range(offset, (offset + 7 if offset + 7 < 26 else 26)) %}
+							<td class="calendar-cell" onclick="location.href += 'days/{{ day }}/'"> {{ day }} </td>
+						{% endfor %}
+					</tr>
 				{% endfor %}
-			</tr>
-		{% endfor %}
-	</table>
+			</table>
+		</div>
 
-	<div id="leaderboard-title">Leaderboard</div>
+		<div id="leaderboard-div">
+			<div class="spacer"></div>
+			<h1>Leaderboard</h1>
 
-	<table>
-		{% for user in leaderboard %}
-			<tr>
-				<th class="leaderboard-name-cell">{{ loop.index0 + 1 }}. {{ user.username }}</th>
-				<th class="leaderboard-score-cell">{{ user.points }}</th>
-			</tr>
-		{% endfor %}
-	</table>
+			<table id="leaderboard">
+				{% for user in leaderboard %}
+					<tr {{ 'id=user-row' if user.username == username }}>
+						<td class="leaderboard-position">{{ loop.index0 + 1 }}</td>
+						<td>{{ user.username }}</td>
+						<td class="leaderboard-points">{{ user.points }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+
+			<div class="spacer"></div>
+		</div>
+	</main>
 {% endblock %}

@@ -24,14 +24,14 @@ def needs_auth(func):
 def home_route(username):
     # Calculates the leaderboard based on aoc's local_score
     leaderboard = User.query.all()
-    leaderboard.sort(key=lambda p: p.username, reverse=True)
-    return render_template('home.html', leaderboard=leaderboard)
+    leaderboard.sort(key=lambda p: p.points, reverse=True)
+    return render_template('home.html', leaderboard=leaderboard, username=username)
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login_route():
     # Returns a login page to the get requests
     if request.method == 'GET':
-        return render_template('login.html')
+        return render_template('login.html', login_page=True)
 
     # Collects the request's data
     username = request.form.get('username')
@@ -39,7 +39,7 @@ def login_route():
 
     # Ensures the user exists
     if not User.query.filter_by(username=username).first():
-        return render_template('login.html', error='Invalid username'), 401
+        return render_template('login.html', login_page=True, error='Invalid username'), 401
 
     # Redirects to the index page setting the username
     r = make_response(redirect('/'), 200)

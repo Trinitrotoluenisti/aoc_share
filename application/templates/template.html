@@ -19,6 +19,16 @@
 	</head>
 
 	<body>
+		{% if not login_page|default(false) %}
+			<nav>
+				<button onclick='location.href = "https://adventofcode.com/";'>AOC Website</button>
+
+				<form action="/logout" method="POST">
+					<input type="submit" value="Logout">
+				</form>
+			</nav>
+		{% endif %}
+
 		{% block body %}{% endblock %}
 	</body>
 </html>
