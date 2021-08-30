@@ -25,7 +25,7 @@ def home_route(username):
     # Calculates the leaderboard based on aoc's local_score
     leaderboard = User.query.all()
     leaderboard.sort(key=lambda p: p.points, reverse=True)
-    return render_template('home.html', leaderboard=leaderboard, username=username)
+    return render_template('home.html', leaderboard=leaderboard, username=username, home_page=True)
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login_route():

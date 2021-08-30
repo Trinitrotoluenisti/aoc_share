@@ -1,14 +1,15 @@
 :root {
-	--background: #F6F8FA;
-	--background-nav: #24292E;
-	--foreground: #586069;
+	--background: #F1E9DA;
+	--foreground: #2E294E;
+	--highlight: #7E32C9;
+	--nav-background: #FFD400;
 }
 
 html {
 	margin: 0;
 	height: 100%;
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Rubik', sans-serif;
 
 	background-color: var(--background);
 	color: var(--foreground);
@@ -25,33 +26,39 @@ nav {
 	width: 100%;
 	height: 60px;
 	margin: 0;
+	 border-bottom: 1px solid;
 
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 
-	background-color: var(--background-nav);
+	background-color: var(--nav-background);
 }
 
 nav * {
 	margin-right: 30px;
-
 	border: none;
-	color: white;
-	background-color: var(--background-nav);
 
+
+	 font-size: 1em;
 	text-align: center;
 	font-weight: bold;
 	text-decoration: none;
 
+	background-color: var(--nav-background);
+
 	cursor: pointer;
 }
 
-nav *:hover { opacity: .8; }
+nav *:hover { color: var(--background); }
+
+#back-button { margin-right: auto; }
 
 /* Form stuff */
 
 label { font-size: 1.2em; }
+
+input, button { font-family: 'Rubik', sans-serif; }
 
 input[type=text] {
 	padding: .7vh;
@@ -64,11 +71,7 @@ input[type=submit], button {
 	margin: 10px 0;
 	padding: 8px 16px;
 
-	border: 2px solid var(--foreground);
 	border-radius: 3px;
-
-	background-color: var(--foreground);
-	color: var(--background);
 
 	text-align: center;
 	font-weight: bold;
@@ -80,6 +83,5 @@ input[type=submit], button {
 }
 
 input[type=submit]:hover, button:hover {
-	background-color: var(--background);
-	color: var(--foreground);
+	background-color: var(--nav-highlight);
 }

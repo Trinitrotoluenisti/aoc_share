@@ -1,6 +1,6 @@
 main {
 	width: 100%;
-	height: calc(100% - 60px);
+	height: calc(100% - 61px);
 
 	display: flex;
 	align-items: center;
@@ -34,7 +34,7 @@ table { border-collapse: collapse; }
 }
 
 .calendar-cell:hover {
-	background-color: var(--foreground);
+	background-color: var(--highlight);
 	color: var(--background);
 
 	cursor: pointer;
@@ -50,7 +50,10 @@ table { border-collapse: collapse; }
 
 #leaderboard tr { border-bottom: 1px solid; }
 
-#user-row { background-color: #E7E7E7; }
+#user-row {
+	background-color: var(--highlight);
+	color: var(--background);
+}
 
 #leaderboard td { padding: 20px 10px 5px 10px; }
 
